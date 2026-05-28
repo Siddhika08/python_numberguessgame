@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI';
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+
+    .box {
+      padding: 30px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.2);
+      text-align: center;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      background: #00c9a7;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>🎯 Guess the Number</h2>
+
+  <input type="number" id="guess" placeholder="Enter number">
+  <button onclick="check()">Guess</button>
+
+  <p id="msg"></p>
+  <p id="attempts"></p>
+</div>
+
+<script>
+function check() {
+  let guess = Number(document.getElementById("guess").value);
+  let secret = Number(localStorage.getItem("secret"));
+  let attempts = Number(localStorage.getItem("attempts"));
+
+  if (!guess) {
+    document.getElementById("msg").innerText = "Enter a number!";
+    return;
+  }
+
+  attempts++;
+  localStorage.setItem("attempts", attempts);
+
+  if (guess < secret) {
+    document.getElementById("msg").innerText = "Too Low 🔼";
+  } 
+  else if (guess > secret) {
+    document.getElementById("msg").innerText = "Too High 🔽";
+  } 
+  else {
+    window.location.href = "thankyou.html";
+  }
+
+  document.getElementById("attempts").innerText = "Attempts: " + attempts;
+}
+</script>
+
+</body>
+</html>
