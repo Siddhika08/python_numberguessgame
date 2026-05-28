@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thank You</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI';
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #11998e, #38ef7d);
+      color: white;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #ff7a18;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<div>
+  <h1>🎉 YOU WON!</h1>
+  <p id="attempts"></p>
+  <button onclick="restart()">Play Again</button>
+</div>
+
+<script>
+let attempts = localStorage.getItem("attempts");
+document.getElementById("attempts").innerText =
+  "You won in " + attempts + " attempts!";
+
+function restart() {
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
